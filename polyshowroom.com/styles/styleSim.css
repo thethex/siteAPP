@@ -1,0 +1,37 @@
+#menuSimulation{
+	position:relative;
+	width:100%;
+	height:200px;
+	list-style-type: none;
+}
+
+
+
+#valCapteurs{
+	font-size:12px;
+}
+
+
+#simulation{
+	position:relative;
+	margin:0;
+	padding:0;
+	width: 100%;
+}
+#canvasSimulation{
+	display:block;
+	width: 100%;
+}
+
+
+
+#nomSelection{
+	min-width:64px;
+
+}
+
+.boutonSelection{
+	width:64px
+	height:32px;
+	
+}
