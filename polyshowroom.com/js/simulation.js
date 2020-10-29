@@ -31,7 +31,7 @@ var isDragging=false;
 var startX,startY;
 
 // hold the index of the shape being dragged (if any)
-var selectedObjetsIndex;
+var selectedObjetIndex;
 
 var offsetX,offsetY;
 
@@ -391,6 +391,56 @@ function reOffset(){
 }
 
 
+
+function rotationObjet(){
+	angle=10*Math.PI/180;
+	if(0<selectedObjectIndex){
+		objet=objects[selectedObjectIndex];
+		
+		coordonneesObjet=[objet.Ax,objet.Ay,objet.Bx,objet.By,objet.Cx,objet.Cy,objet.Dx,objet.Dy];
+		console.log(coordonneesObjet);
+		nouveauPoint=[0,0];
+		xCentre=0;
+		yCentre=0;
+		
+		
+		//calcul centre gravité
+		for(var i=0;i<4;i++){
+			xCentre+=coordonneesObjet[i*2];
+			yCentre+=coordonneesObjet[i*2+1];
+		}
+		xCentre=xCentre/4;
+		yCentre=yCentre/4;
+		
+		for(var i=0;i<4;i++){
+			//pour chaque point on recalcul ses coordonnées après rotation par rapport au  (calcul du centre gravité)
+			nouveauPoint[0]=coordonneesObjet[2*i]-xCentre;
+			nouveauPoint[1]=coordonneesObjet[2*i+1]-yCentre;
+			nouveauPoint=rotationPoint(nouveauPoint,0.1);
+			coordonneesObjet[2*i]=nouveauPoint[0]+xCentre;
+			coordonneesObjet[2*i+1]=nouveauPoint[1]+yCentre;
+		}
+		console.log(coordonneesObjet);
+		objet.Ax=coordonneesObjet[0];
+		objet.Ay=coordonneesObjet[1];
+		objet.Bx=coordonneesObjet[2];
+		objet.By=coordonneesObjet[3];
+		objet.Cx=coordonneesObjet[4];
+		objet.Cy=coordonneesObjet[5];
+		objet.Dx=coordonneesObjet[6];
+		objet.Dy=coordonneesObjet[7];
+		objects[selectedObjectIndex]=objet;
+	}
+	changement=1;
+	simule();
+}
+
+function rotationPoint(point, angle){
+	res=[0,0];
+	res[0]=point[0]*Math.cos(angle)-point[1]*Math.sin(angle);
+	res[1]=point[0]*Math.sin(angle)+point[1]*Math.cos(angle);	
+	return res;
+}
 
 
 function isMouseInObject(x,y,object){
