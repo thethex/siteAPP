@@ -4,42 +4,68 @@
 <head>
     <meta charset="utf-8" />
     <title>Poly'Showroom</title>
-	<link rel="stylesheet" href="styles/style.css" />
-	<script src="js/mesScripts.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.vnm.percentWithinViewport.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="ressources/favicon.ico" /> 
+	<link rel="stylesheet" href="styles/styleGeneral.css" />
+	<link rel="stylesheet" href="styles/styleAcceuil.css" />
+	
+	
     <meta charset="UTF-8">
-
 </head>
 
 <body>
-	<div id="menus">
-	<nav id="barreNavigation" class="barreNav">
-		<button id="boutonPrincipal" onclick="showMenu()" ><img src="ressources/boutonPrincipal.png" ></button>
-		<li class="boutonBarre"><a href="index.html" name='link'>Polyshowroom</a></li>
-		<li class="boutonBarre"><a href="#conception" name='link'>Conception</a></li>
-		<li class="boutonBarre"><a href="simulation.html" name='link'>Simulation</a></li>
-	</nav>
-	<nav id="contenantBarreMenu">
-        <div id="barreMenu">
-		    <li class="boutonMenu">Conception</li>
-		    <li class="boutonMenu"><a href="#presentation" name='link'>Présentation</a></li>
-		    <li class="boutonMenu"><a href="#conception" name='link'>Conception</a></li>
-		</div>
-	</nav>
-	</div>
 	
-	<div id="contenu" class="">
-		<div id="presentation" class="">
-			<video muted autoplay="true" src="./ressources/Timelapse1.mp4" class="videoFond" >
-			</video>
+	<div class="ecran">
+		<div class="fondEcran">
 		</div>
-		<div class="interSection">
-			<li class="liCentre">WOW C'EST VRAIMENT BIEN!</li>
+		<div id="menus">
+			<nav id="conteneurBarreNavigation">
+				<div id="barreNavigation">
+				
+					<div class="boutonBarreNav"><a href="index.html" name='link'>Polyshowroom</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+					<div id="boutonOuvertureMenu" ><div class="barreCroix" id="croixMenuHaut"></div><div  class="barreCroix" id="croixMenuMilieu"></div><div  class="barreCroix" id="croixMenuBas"></div></div>
+					<div id="conteneurNavigation">	
+						<div class="boutonBarreNav"><a href="#conception" name='link'>Conception</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+						<div class="boutonBarreNav"><a href="simulation.html" name='link'>Simulation</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+					</div>
+				</div>
+			</nav>
 		</div>
-		<div class="section">
-			<img src = "./ressources/blueprint.png" class="imageFond">
-			<div id="explications1"> Ceci est un test</div>
+	
+	
+	
+	
+		<div id="videoPresentation">
+			<div class="video_wrap">
+				<div id="overlay"></div>
+				<video muted autoplay="true" src="./ressources/Timelapse1.mp4" class="video" ></video>	
+			</div>
 		</div>
+	</div>
+
+	
+		<div class="ecran">
+			<div id="conteneurSalon" class="chargeable">
+			<div id="conteneurTextSalon">
+				<div id="conteneurZoneTextSalon" class="centerVertFlex">
+					<div id="texteSalon" >testtesestestss</div>	
+				</div>
+			</div>
+			<div id="conteneurImageSalon" class="centerVertFlex">
+					<div id="imSalon" class="image_wrap">
+						<img src = "./ressources/salon.jpg" >
+				</div>
+			</div>
+				
+			</div>
+		
+		</div>
+	
+	<div class="ecran">
+		<div id="explications1"> Ceci est un test</div>
+	</div>
+	<div class="contenu">
 		<div class="interSection">
 			<li class="liCentre">conception compliqué</li>
 		</div>	
@@ -94,4 +120,8 @@
 		</div>
 	</div>
 </body>
+<footer>
+	<script src="js/scriptsGeneraux.js"></script>
+
+</footer>
 </html>

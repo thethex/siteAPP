@@ -3,40 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <title>Poly'Showroom</title>
-	<link rel="stylesheet" href="styles/style.css" />
+	<link rel="stylesheet" href="styles/styleGeneral.css" />
 	<link rel="stylesheet" href="styles/styleSim.css" />
-	<script src="js/mesScripts.js"></script>
-	<script src="js/simulation.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
     <meta charset="UTF-8">
 
 </head>
 
 <body>
 	<div id="menus">
-	<nav id="barreNavigation" class="barreNav">
-		<button id="boutonPrincipal" onclick="showMenu()" ><img src="ressources/boutonPrincipal.png"></button>
-		<li class="boutonBarre"><a href="index.html" name='link'>Polyshowroom</a></li>
-		<li class="boutonBarre"><a href="#conception" name='link'>Conception</a></li>
-		<li class="boutonBarre"><a href="simulation.html" name='link'>Simulation</a></li>
-		
-	</nav>
-	<nav id="contenantBarreMenu">
-		<div id="barreMenu">
-		<li class="boutonMenu">Conception</li>
-		<li class="boutonMenu"><a href="#presentation" name='link'>Présentation</a></li>
-		<li class="boutonMenu"><a href="#conception" name='link'>Conception</a></li>
-		
+			<nav id="conteneurBarreNavigation">
+				<div id="barreNavigation">
+				
+					<div class="boutonBarreNav"><a href="index.html" name='link'>Polyshowroom</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+					<div id="boutonOuvertureMenu" ><div class="barreCroix" id="croixMenuHaut"></div><div  class="barreCroix" id="croixMenuMilieu"></div><div  class="barreCroix" id="croixMenuBas"></div></div>
+					<div id="conteneurNavigation">	
+						<div class="boutonBarreNav"><a href="#conception" name='link'>Conception</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+						<div class="boutonBarreNav"><a href="simulation.html" name='link'>Simulation</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+					</div>
+				</div>
+			</nav>
 		</div>
-	</nav>
-	</div>
 	
-	<div id="contenu" class="">
+	
+	<div id="conteneurSimulation">
 		<div id="menuSimulation">
-			<div id="selection">
 				
 				<table>
 			
-				<td>
+				<td id="menuSelection">
 					<table>
 						<tr><li>Objet Selectionné:</li><tr>
 					<tr>
@@ -46,12 +42,14 @@
 					</tr>
 						</table>
 				</td>
-				<td>
-						<td><button id="boutonRotation" onclick="rotationObjet()" ><img src="ressources/boutonRotation.png"></button></td>
-				
+				<td id="operationsMenuSimulation" style="display:none">
+					<table >
+						<td><button id="boutonRotation" onclick="rotationObjet(10)" ><img src="ressources/boutonRotation.png"></button></td>
+						<td><button id="boutonRotation" onclick="rotationObjet(-10)" ><img src="ressources/boutonRotation.png"></button></td>
+					</table>
 				</td>
-				<table>
-			</div>
+				</table>
+
 		</div>
 		<div id="simulation">
 		<canvas id="canvasSimulation" width="1920px" height="1080px">
@@ -59,7 +57,32 @@
 		
 		<div class="interSection">
 			<li id="valCapteurs"></li>
+			
+			
+			<input type="button" id="confirm" value="Register Now" class="button">
+			<script type="text/javascript">
+				$(document).ready(function () {
+					$("#confirm").click(function () {
+						console.log("click");
+						$.ajax({
+								type: "POST",
+								url: "envoi.php",
+								data: {Valeurs: document.getElementById("valCapteurs").innerHTML}
+							})
+							.done(function (msg) {
+								console.log("done");
+							});
+					});
+				});
+			</script>
+
+
 		</div>
 	</div>
 </body>
+<footer>
+	<script src="js/scriptsSimulation.js"></script>
+	<script src="js/simulation.js"></script>
+</footer>
+
 </html>
