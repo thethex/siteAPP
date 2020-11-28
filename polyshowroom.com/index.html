@@ -9,16 +9,17 @@
 	<link rel="shortcut icon" type="image/x-icon" href="ressources/favicon.ico" /> 
 	<link rel="stylesheet" href="styles/styleGeneral.css" />
 	<link rel="stylesheet" href="styles/styleAcceuil.css" />
-	
-	
+	<link rel="stylesheet" href="styles/styleCarrousselBandeAutomatique.css" />
+	<link rel="stylesheet" href="styles/styleFooter.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <meta charset="UTF-8">
 </head>
 
 <body>
-	
+
+	<div class="fondEcran" style="	background-image:url('/ressources/fondPrincipal.jpg');"></div>
+
 	<div class="ecran">
-		<div class="fondEcran">
-		</div>
 		<div id="menus">
 			<nav id="conteneurBarreNavigation">
 				<div id="barreNavigation">
@@ -34,24 +35,35 @@
 		</div>
 	
 	
-	
+
 	
 		<div id="videoPresentation">
 			<div class="video_wrap">
-				<div id="overlay"></div>
-				<video muted autoplay="true" src="./ressources/Timelapse1.mp4" class="video" ></video>	
+				<video muted autoplay="true" src="./ressources/Timelapse1.mp4" class="video" ></video>				
+			</div>
+			<div id="conteneurInfosVideoAcceuil">
+				<p id="texteAcceuil" class="GrosText">Faites entrer le fun dans votre maison</p>
+				<div class="boutonTransparent"></div>
 			</div>
 		</div>
-	</div>
-
 	
+		</div>
+		
+		
+		<div id="fondCorps">
+		
+		<div id="conteneurBandeauPresentation">
+			<p > Si vous aussi vous en avez marre de rester avachi dans votre canapé toute le journée, on à la solution qu’il vous faut ! Grâce à la Poly’table, cette table révolutionnaire vous allez pouvoir égayer vos journée et rendre votre maison connectée. </p>
+		</div>
+		
 		<div class="ecran">
 			<div id="conteneurSalon" class="chargeable">
 			<div id="conteneurTextSalon">
 				<div id="conteneurZoneTextSalon" class="centerVertFlex">
-					<div id="texteSalon" >testtesestestss</div>	
+					<p id="texteSalon" class="GrosText" > Elle permet de détecter la présence des personnes dans la pièce grâce à des capteurs innovants basé sur une technologie inédite d’ultrasons.</p>	
 				</div>
 			</div>
+			
 			<div id="conteneurImageSalon" class="centerVertFlex">
 					<div id="imSalon" class="image_wrap">
 						<img src = "./ressources/salon.jpg" >
@@ -61,67 +73,82 @@
 			</div>
 		
 		</div>
-	
-	<div class="ecran">
-		<div id="explications1"> Ceci est un test</div>
-	</div>
-	<div class="contenu">
-		<div class="interSection">
-			<li class="liCentre">conception compliqué</li>
-		</div>	
-		<div class="section">
-			<table cellspacing="0" cellpadding="0" class="tableauDemiImage">
-				<tr>
-					<td class="demiObjet">
-						<img src = "./ressources/salon.jpg" class="demiImage" >
-					
-					</td>
-					<td class="demiObjet">
-						<div > 
-							<li>cool</li>
-							<li>cool</li>
-							<li>cool</li>
-							<li>cool</li>
-							<li>cool</li>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="interSection">
-			<li>WOW C'EST VRAIMENT BIEN!</li>
-		</div>
-			<div id="panneaux" class="section">
-			<table  class="tableauPanneaux">
-				<tr>
-					<td class="quartObjet">
-						<img src = "./ressources/panneauPiou.jpg" class="demiImage" >
-					
-					</td>
-					<td class="quartObjet">
-                        <img src = "./ressources/panneauTel.jpg" class="demiImage" >
-						<div > 
-						
-						</div>
-					</td>
-				</tr>
-            <tr>
-					<td class="quartObjet">
-						<img src = "./ressources/panneau.jpg" class="demiImage" >
-					
-					</td>
-					<td class="quartObjet">
-						<div > 
-						<img src = "./ressources/panneauHF.jpg" class="demiImage" >
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-</body>
-<footer>
-	<script src="js/scriptsGeneraux.js"></script>
 
-</footer>
+		<div class="conteneurSlider">
+			<div class="slider">
+				<div class="slide-track">
+					<div class="slide">
+						<img src="https://file.diplomeo-static.com/file/00/00/01/52/15294.svg" height="100" width="250" alt="" />
+					</div>
+					<div class="slide" style="width:170px">
+						<img src="https://yohan-dordolo.com/ressources/image/logo_listic.png" height="100" width="170" alt="" />
+					</div>
+					<div class="slide" style="width:350px">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Logo_Polytech_Annecy_Chambery.svg/1280px-Logo_Polytech_Annecy_Chambery.svg.png" height="100" width="350" alt="" />
+					</div>
+					<div class="slide">
+						<img src="https://file.diplomeo-static.com/file/00/00/01/52/15294.svg" height="100" width="250" alt="" />
+					</div>
+					<div class="slide" style="width:170px">
+						<img src="https://yohan-dordolo.com/ressources/image/logo_listic.png" height="100" width="170" alt="" />
+					</div>
+					<div class="slide" style="width:350px">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Logo_Polytech_Annecy_Chambery.svg/1280px-Logo_Polytech_Annecy_Chambery.svg.png" height="100" width="350" alt="" />
+					</div>
+				</div>
+			</div>
+				
+		</div>
+	
+		<div id="panneaux" class="conteneurPanneaux">
+		
+		
+			<div class="row">
+				<div class="column">
+					
+					<img src = "./ressources/panneauPiou.jpg"  >
+					<div class="conteneurVoletGauche conteneurOverlayPanneau">
+						<div id="overlayPanneau">
+							<div class="centeredText">Centered</div>
+						</div>
+					</div>
+				</div>
+				<div class="column">
+                      <img src = "./ressources/panneauTel.jpg"  >
+					  <div class="conteneurVoletBas conteneurOverlayPanneau">
+						<div id="overlayPanneau">
+							<div class="centeredText">Centered</div>
+						</div>
+					</div>
+				</div>
+		
+			
+			
+				<div class="column"  id="columnRightFloatInstruction">
+					<img src = "./ressources/panneauHF.jpg" >
+					<div class="conteneurVoletHaut conteneurOverlayPanneau" >
+						<div id="overlayPanneau">
+							<div class="centeredText">Centered</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="column" >
+					<img src = "./ressources/panneau.jpg" >
+					<div class="conteneurVoletDroite conteneurOverlayPanneau">
+						<div id="overlayPanneau">
+							<div class="centeredText">Centered</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div id="footer">
+		</div>
+</body>
+	<footer>
+		<script src="js/scriptsGeneraux.js"></script>
+		<script src="js/scriptsMenu.js"></script>
+	</footer>
 </html>

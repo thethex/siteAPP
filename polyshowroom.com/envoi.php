@@ -20,12 +20,9 @@
 	$valeur= $_POST['Valeurs'];	
 		
 		
-	$query="UPDATE ValCapteurs SET Valeurs='".$valeur."' WHERE Id=1";
+	$query="UPDATE valcapteurs SET Valeurs='".$valeur."' WHERE Id=1";
 	mysqli_query($conn,$query);
 
-
-				
-	
 	
 	mysqli_close($conn);
 	

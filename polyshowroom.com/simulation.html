@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="styles/styleGeneral.css" />
 	<link rel="stylesheet" href="styles/styleSim.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+	<link rel="shortcut icon" type="image/x-icon" href="ressources/favicon.ico" /> 
     <meta charset="UTF-8">
 
 </head>
@@ -46,8 +46,21 @@
 					<table >
 						<td><button id="boutonRotation" onclick="rotationObjet(10)" ><img src="ressources/boutonRotation.png"></button></td>
 						<td><button id="boutonRotation" onclick="rotationObjet(-10)" ><img src="ressources/boutonRotation.png"></button></td>
+							<td id="changementTouches">
+								<div class="grid-container">
+									<div class="grid-item"></div>
+									<div class="grid-item">	<button id="haut" class="boutonSelectionTouche" onclick=" inputTouche('haut')">?</button></div>
+									<div class="grid-item"></div>  
+									<div class="grid-item">	<button id="gauche"  class="boutonSelectionTouche" onclick="inputTouche('gauche')">?</button></div>
+									<div class="grid-item">	<button id="bas"  class="boutonSelectionTouche" onclick="inputTouche('bas')">?</button></div>
+									<div class="grid-item">	<button id="droite"  class="boutonSelectionTouche" onclick="inputTouche('droite')">?</button></div>
+								</div >
+								
+							
+							</td>
 					</table>
 				</td>
+			
 				</table>
 
 		</div>
@@ -70,7 +83,7 @@
 								data: {Valeurs: document.getElementById("valCapteurs").innerHTML}
 							})
 							.done(function (msg) {
-								console.log("done");
+								console.log(document.getElementById("valCapteurs").innerHTML);
 							});
 					});
 				});
@@ -81,6 +94,7 @@
 	</div>
 </body>
 <footer>
+	<script src="js/scriptsMenu.js"></script>
 	<script src="js/scriptsSimulation.js"></script>
 	<script src="js/simulation.js"></script>
 </footer>

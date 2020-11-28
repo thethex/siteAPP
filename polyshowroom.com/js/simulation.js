@@ -1,4 +1,3 @@
-
 //variables
 
 
@@ -21,7 +20,7 @@ porteeUltra=810+ecartCentre;
 var changement=0;
 
 // valeurs des capteurs dans le sens anti horaire
-var capteurs=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+var capteurs=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
 
 // save relevant information about shapes drawn on the canvas
 var objects=[];
@@ -46,12 +45,145 @@ var rapport;
 //
 
 
+var vitesse=10;
+
+class Objet{
+
+	
+  constructor(Ax,Ay,Bx,By,Cx,Cy,Dx,Dy,nom){
+    this.Ax=Ax;
+	this.Ay=Ay;
+	this.Bx=Bx;
+	this.By=By;
+	this.Cx=Cx;
+	this.Cy=Cy;
+	this.Dx=Dx;
+	this.Dy=Dy;
+	this.nom=nom;
+  }
+ 
+  
+  modifierPositionDragged(dx,dy,rapport){
+	this.Ax+=dx/rapport;
+    this.Ay+=dy/rapport;
+	this.Bx+=dx/rapport;
+    this.By+=dy/rapport;
+	this.Cx+=dx/rapport;
+    this.Cy+=dy/rapport;
+	this.Dx+=dx/rapport;
+    this.Dy+=dy/rapport;
+  }
+	
+	gauche(){
+		this.Ax-=vitesse;
+		this.Bx-=vitesse;
+		this.Cx-=vitesse;
+		this.Dx-=vitesse;
+		changement=1;
+		simule();
+	}
+	haut(){
+		this.Ay-=vitesse;
+		this.By-=vitesse;
+		this.Cy-=vitesse;
+		this.Dy-=vitesse;
+		changement=1;
+		simule();
+	}
+	droite(){
+		this.Ax+=vitesse;
+		this.Bx+=vitesse;
+		this.Cx+=vitesse;
+		this.Dx+=vitesse;
+		changement=1;
+		simule();
+	}
+	bas(){
+		this.Ay+=vitesse;
+		this.By+=vitesse;
+		this.Cy+=vitesse;
+		this.Dy+=vitesse;
+		changement=1;
+		simule();
+	}
+	
+  getNom(){
+	  return this.nom;
+  }
+  
+  
+  rotation(angle){
+	
+	//sens trigo inversé avec y on rajoute donc un -
+	angle=-angle*Math.PI/180;
+	if(0<selectedObjectIndex){
+
+		var coordonneesObjet=[this.Ax,this.Ay,this.Bx,this.By,this.Cx,this.Cy,this.Dx,this.Dy];
+		var nouveauPoint=[0,0];
+		var xCentre=0;
+		var yCentre=0;
+		//calcul centre gravité
+		for(var i=0;i<4;i++){
+			xCentre+=coordonneesObjet[i*2];
+			yCentre+=coordonneesObjet[i*2+1];
+		}
+		xCentre=xCentre/4;
+		yCentre=yCentre/4;
+		
+		for(var i=0;i<4;i++){
+			//pour chaque point on recalcul ses coordonnées après rotation par rapport au  (calcul du centre gravité)
+			nouveauPoint[0]=coordonneesObjet[2*i]-xCentre;
+			nouveauPoint[1]=coordonneesObjet[2*i+1]-yCentre;
+			nouveauPoint=OpMathematiques.rotationPoint(nouveauPoint,angle);
+			coordonneesObjet[2*i]=nouveauPoint[0]+xCentre;
+			coordonneesObjet[2*i+1]=nouveauPoint[1]+yCentre;
+		}
+		this.Ax=coordonneesObjet[0];
+		this.Ay=coordonneesObjet[1];
+		this.Bx=coordonneesObjet[2];
+		this.By=coordonneesObjet[3];
+		this.Cx=coordonneesObjet[4];
+		this.Cy=coordonneesObjet[5];
+		this.Dx=coordonneesObjet[6];
+		this.Dy=coordonneesObjet[7];
+	}
+	
+	changement=1;
+	simule();
+  }
+  
+	
+}
+
+class ClassObjetImage extends Objet{
+  constructor(Ax,Ay,Bx,By,Cx,Cy,Dx,Dy,nom,texture){
+	super(Ax,Ay,Bx,By,Cx,Cy,Dx,Dy,nom);
+	this.texture=texture;
+
+  }
+  
+  getImage(){
+	  return this.texture;
+	}
+}
+
+class OpMathematiques{
+	static rotationPoint(point, angle){
+		res=[0,0];
+		res[0]=point[0]*Math.cos(angle)-point[1]*Math.sin(angle);
+		res[1]=point[0]*Math.sin(angle)+point[1]*Math.cos(angle);	
+		return res;
+	}
+}
+
+
 window.onload=function(){
 	imgFond.src="ressources/fondSimulation.jpg";
 	imgTable.src="ressources/table.png";
 	imgPers.src="ressources/personne.png";
-	objects.push( {Ax:0, Ay:0, Bx:192, By:0, Cx:192, Cy:192, Dx:0, Dy:192, image:imgTable , nom:"table"} );
-	objects.push( {Ax:1500, Ay:100, Bx:1615, By:100, Cx:1665, Cy:154, Dx:1450, Dy:154, image:imgPers, nom:"personne"} );
+	objects.push( new ClassObjetImage(0, 0, 192, 0, 192, 192, 0, 192, "table",imgTable) );
+	objects.push( new Objet (1500, 100, 1615, 100, 1665, 154, 1450, 154,"personne") );
+	objects.push( new Objet(1200, 100, 1315, 100, 1365, 154, 1250, 254,"personne2") );
 	canvas=document.getElementById("canvasSimulation");
 
 	reOffset();
@@ -64,8 +196,8 @@ window.onload=function(){
 	window.onresize=function(e){ reOffset(); }
 	canvas.onresize=function(e){ reOffset(); }
 
-	setInterval(simule,500);
-	
+	setInterval(simule,100);
+	setInterval(calculActions,10);
 	//fonction permetant de lancer la simulation
 
 	
@@ -77,14 +209,19 @@ window.onload=function(){
 
 function simule(){
 	// traitements physiques de la simulation (détection pour la majorité)
-	
+
 	if(changement==1){
-		res="";
+		res="{";
 		for(var i=0;i<16;i++){
 			 res+= calculRetourCapteur(i);
+			 if(i<15){
+				res+=",";
+			 }
    	 	}
+		res+="}";
 		document.getElementById("valCapteurs").innerHTML=res;
-		document.getElementById("nomSelection").innerHTML=objects[selectedObjectIndex].nom;
+	
+	
 		dessine();
 		changement=0;
 	}
@@ -93,9 +230,11 @@ function simule(){
 
 
 function calculRetourCapteur(indice){
-	res="";
-	angle=(indice*22.5+11.25)*Math.PI/180;
-	
+	var res="";
+	var angle=(indice*22.5+11.25)*Math.PI/180;
+	var resIntermediaire=0;
+		//on initialise très haut pour pouvoir prndre le résultat intermédiaire le plus bas
+	capteurs[indice]=10000;
 	
 	for(var i=1;i<objects.length;i++){
 		object=objects[i];
@@ -106,9 +245,18 @@ function calculRetourCapteur(indice){
 		ABCD=[object.Ax,object.Ay,object.Bx,object.By,object.Cx,object.Cy,object.Dx,object.Dy];
 		//ABCDt=ABCD translaté pour que l'origine soit la table
 	   	ABCDt=calculAnglesPointsObjet(ABCD);
-		capteurs[indice]=intersectionUltrason(indice,ABCDt);
-		res="capteur "+indice+"  distance : "+capteurs[indice]+"  |";
+		resIntermediaire=intersectionUltrason(indice,ABCDt);
+		if(resIntermediaire != null){
+			if(capteurs[indice] > resIntermediaire && resIntermediaire >= 0){
+				capteurs[indice]=resIntermediaire;
+			}
+		}
 	}
+	//si la valeur est celle d'initialisation alors aucun objet n'est dans le range on met la valeur à -1 
+	if(capteurs[indice]==10000){capteurs[indice]=-1}
+	
+	res="\"capteur"+indice+"\" : "+capteurs[indice];
+	
 	return res;
 	
 }
@@ -364,6 +512,7 @@ function intersectionUltrason(indice,ABCDt){
 	if(ecartCentre<res){
 		//on soustrait l'écart entre le capteur et le centre
 		res-=ecartCentre;
+		res=res/(rapportTailleCase*2);
 	}else if(0<res){
 			 res=0;
 	}
@@ -376,11 +525,6 @@ coefDh=Math.tan(7.5*Math.PI/180) ;
 
 
 
-function pointPlusProche(x,y,ABCD){
-	
-	
-}
-
 // used to calc canvas position relative to window
 function reOffset(){
     var BB=canvas.getBoundingClientRect();
@@ -392,56 +536,14 @@ function reOffset(){
 
 
 
-function rotationObjet(){
-	angle=10*Math.PI/180;
-	if(0<selectedObjectIndex){
-		objet=objects[selectedObjectIndex];
-		
-		coordonneesObjet=[objet.Ax,objet.Ay,objet.Bx,objet.By,objet.Cx,objet.Cy,objet.Dx,objet.Dy];
-		console.log(coordonneesObjet);
-		nouveauPoint=[0,0];
-		xCentre=0;
-		yCentre=0;
-		
-		
-		//calcul centre gravité
-		for(var i=0;i<4;i++){
-			xCentre+=coordonneesObjet[i*2];
-			yCentre+=coordonneesObjet[i*2+1];
-		}
-		xCentre=xCentre/4;
-		yCentre=yCentre/4;
-		
-		for(var i=0;i<4;i++){
-			//pour chaque point on recalcul ses coordonnées après rotation par rapport au  (calcul du centre gravité)
-			nouveauPoint[0]=coordonneesObjet[2*i]-xCentre;
-			nouveauPoint[1]=coordonneesObjet[2*i+1]-yCentre;
-			nouveauPoint=rotationPoint(nouveauPoint,0.1);
-			coordonneesObjet[2*i]=nouveauPoint[0]+xCentre;
-			coordonneesObjet[2*i+1]=nouveauPoint[1]+yCentre;
-		}
-		console.log(coordonneesObjet);
-		objet.Ax=coordonneesObjet[0];
-		objet.Ay=coordonneesObjet[1];
-		objet.Bx=coordonneesObjet[2];
-		objet.By=coordonneesObjet[3];
-		objet.Cx=coordonneesObjet[4];
-		objet.Cy=coordonneesObjet[5];
-		objet.Dx=coordonneesObjet[6];
-		objet.Dy=coordonneesObjet[7];
-		objects[selectedObjectIndex]=objet;
-	}
-	changement=1;
-	simule();
+function rotationObjet(angle){
+	objects[selectedObjectIndex].rotation(angle);
 }
 
-function rotationPoint(point, angle){
-	res=[0,0];
-	res[0]=point[0]*Math.cos(angle)-point[1]*Math.sin(angle);
-	res[1]=point[0]*Math.sin(angle)+point[1]*Math.cos(angle);	
-	return res;
-}
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////		fonctions de déplacement des objets avec la sourie 	    /////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function isMouseInObject(x,y,object){
     // ray-casting algorithm based on
@@ -521,37 +623,66 @@ function handleMouseMove(e){
     var dy=mouseY-startY;
     // move the selected shape by the drag distance
     var selectedObject=objects[selectedObjectIndex];
-    selectedObject.Ax+=dx/rapport;
-    selectedObject.Ay+=dy/rapport;
-	 selectedObject.Bx+=dx/rapport;
-    selectedObject.By+=dy/rapport;
-	 selectedObject.Cx+=dx/rapport;
-    selectedObject.Cy+=dy/rapport;
-	 selectedObject.Dx+=dx/rapport;
-    selectedObject.Dy+=dy/rapport;
+    selectedObject.modifierPositionDragged(dx,dy,rapport);
     // clear the canvas and redraw all shapes
 	changement=1;
 	dessine();
+	
+	
+	
+	document.getElementById("nomSelection").innerHTML=objects[selectedObjectIndex].getNom();
+	document.getElementById("gauche").innerHTML="?"; 		
+	document.getElementById("bas").innerHTML="?"; 
+	document.getElementById("droite").innerHTML="?";
+	document.getElementById("haut").innerHTML="?";
+	for (var [key, value] of keyMap) {
+		 	if(value[0]==selectedObjectIndex){
+				if(value[1]=="gauche"){
+					document.getElementById("gauche").innerHTML=key; 
+				}else if(value[1]=="bas"){
+					document.getElementById("bas").innerHTML=key; 
+				}else if(value[1]=="droite"){
+					document.getElementById("droite").innerHTML=key; 	 
+				}else if(value[1]=="haut"){
+					document.getElementById("haut").innerHTML=key;
+				}
+						 
+			}
+		}
+
+	
+	
+	
+		//le menu des modifications sur les objets est cacher si l'objet ne peut être modifié
+		if(selectedObjectIndex<1){
+			document.getElementById("operationsMenuSimulation").style.display="none";
+		}else{
+			document.getElementById("operationsMenuSimulation").style.display="block";		
+		}
+	
     // update the starting drag position (== the current mouse position)
     startX=mouseX;
     startY=mouseY;
 	
-		document.getElementById("nomSelection").innerHTML=selectedObject.nom;
+		document.getElementById("nomSelection").innerHTML=selectedObject.getNom();
 }
 
-// clear the canvas and 
-// redraw all shapes in their current positions
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////		fonctions de dessin des éléments 	    /////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function drawAllobjects(){
   	
-	if(objects[0].image){
-            // it's an image
-            ctx.drawImage(objects[0].image,objects[0].Ax,objects[0].Ay);
+	if(objects[0].getImage()){
+ 
+            ctx.drawImage(objects[0].getImage(),objects[0].Ax,objects[0].Ay);
        }
 	
     for(var i=1;i<objects.length;i++){
         var object=objects[i];
-        if(object.image){
-            // it's an image
 				ctx.globalAlpha =1;
 			 	ctx.fillStyle="red"; 
             	ctx.beginPath();
@@ -560,9 +691,6 @@ function drawAllobjects(){
 				ctx.lineTo(object.Cx, object.Cy);
 				ctx.lineTo(object.Dx, object.Dy);
 				ctx.fill();
-			
-	
-        }
     }
 }
 
@@ -603,11 +731,76 @@ function drawUltraZone(angle,color){
 	
 }
 
+/////////////inputs//////////////////////
 
 
-function rotation(indiceObjet,angle){
-	//si un objet est selectionné et que ce n'est pas la table
-	if(0<indiceObjet){
+
+
+
+
+//declaration dictionnaire touches
+
+var keyMap = new Map();
+var activeKeys = new Array();
+
+
+
+function inputTouche(posTouche) {
+  var txt;
+  var touche = prompt("Touche:", "");
+  if (touche == null || touche == "" || touche.lenght>1) {
+		txt = "User cancelled the prompt.";
+  } else {
+	 keyMap.set(touche, [selectedObjectIndex,posTouche]);
+	  document.getElementById(posTouche).innerHTML = touche;
+  }
+
+}
+
+//calculs des modifications causées par l'appuie sur les touches
+
+function calculActions(){
+	 for (var touche of activeKeys){
+		actionTouche(touche);
+	  }	
+	dessine();
+	
+}
+
+
+
+
+//ecoute clavier lorsqu'on clique sur la simulation
+//debuggé
+document.addEventListener('keydown', function (event) {
 		
-	}
+		if(activeKeys.indexOf(event.key)==-1){
+			activeKeys.push(event.key);
+	   }
+	 
+});
+
+document.addEventListener('keyup', function (event) {
+		var index=activeKeys.indexOf(event.key);
+		if(0<=index){
+			activeKeys.splice(index, 1)
+		}	
+});
+
+function actionTouche(touche){
+  		for (var [key, value] of keyMap) {
+		 	if(key==touche){
+				if(value[1]=="gauche"){
+					objects[value[0]].gauche(); 
+				}else if(value[1]=="bas"){
+					objects[value[0]].bas(); 
+				}else if(value[1]=="droite"){
+					objects[value[0]].droite(); 	 
+				}else if(value[1]=="haut"){
+					objects[value[0]].haut(); 
+				}
+						 
+			}
+		}
+	
 }

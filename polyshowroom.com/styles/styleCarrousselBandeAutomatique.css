@@ -1,0 +1,94 @@
+
+
+/*calculs :
+largeur slider : largeur des images plus les marges en x (20px par image)
+
+width:calc( 770px + 3 * 20px) ;
+
+largeur slide-track : 2* largeur slider 
+
+width:calc( 2* 770px + 3 * 20px) ;
+
+translation: -largeur slider
+
+calc( 2 * 770px + 3 * 20px) ;
+
+*/
+
+.conteneurSlider {
+	align-items: center;
+	background: white;
+	display: flex;
+	height: 120px;
+	justify-content: center;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX( -830px );
+            transform: translateX(-830px);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-830px);
+            transform: translateX(-830px));
+  }
+}
+.slider {
+  background: pr;
+  height: 120px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width:830px ;
+}
+
+.slider::before, .slider::after {
+		content: "";
+		height: 120px;
+		position: absolute;
+		width: 100px;
+		z-index: 2;
+	}
+	
+.slider::after {
+  right: 0;
+  top: 0;
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  display: flex;
+	width:1660px ;
+}
+
+
+@media screen and (max-width: 1150px) {
+	.slider .slide-track {
+		-webkit-animation: scroll 20s linear infinite;
+		animation: scroll 20s linear infinite;
+	}
+	.slider::before, .slider::after {
+		background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+	}
+}
+.slider .slide {
+  margin:10px;
+  height: 100px;
+  width: 250px;
+}
