@@ -27,7 +27,7 @@
 					<div class="boutonBarreNav"><a href="index.html" name='link'>Polyshowroom</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 					<div id="boutonOuvertureMenu" ><div class="barreCroix" id="croixMenuHaut"></div><div  class="barreCroix" id="croixMenuMilieu"></div><div  class="barreCroix" id="croixMenuBas"></div></div>
 					<div id="conteneurNavigation">	
-						<div class="boutonBarreNav"><a href="#conception" name='link'>Conception</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+						<div class="boutonBarreNav"><a href="api.html" name='link'>API</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 						<div class="boutonBarreNav"><a href="simulation.html" name='link'>Simulation</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 					</div>
 				</div>
@@ -35,15 +35,20 @@
 		</div>
 	
 	
-
+		
 	
 		<div id="videoPresentation">
 			<div class="video_wrap">
-				<video muted autoplay="true" src="./ressources/Timelapse1.mp4" class="video" ></video>				
+				<video muted autoplay="true" src="./ressources/Timelapse1.mp4" class="video"  ></video>				
 			</div>
 			<div id="conteneurInfosVideoAcceuil">
+				<div class="containerCenterVert">
 				<p id="texteAcceuil" class="GrosText">Faites entrer le fun dans votre maison</p>
-				<div class="boutonTransparent"></div>
+				<div id="conteneurBoutonVideo">
+				
+						<div class="boutonTransparent"><a href="https://youtube.com" id="boutonVideo">Voir la<br> vidéo</a></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	
@@ -99,8 +104,11 @@
 			</div>
 				
 		</div>
+		</div>
+		<div style="margin:100px 0 0 0;font-size:calc(40px + 1vw);text-align:center;font-family:helvetica;color:rgb(230,230,230)">Une installation simple en 4 étapes</div>
+		
 	
-		<div id="panneaux" class="conteneurPanneaux">
+		<div id="panneauxInstallation" class="conteneurInstructions">
 		
 		
 			<div class="row">
@@ -142,6 +150,78 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="fondCorps">
+		<div style="padding:100px 0 0 0;font-size:calc(40px + 1vw);text-align:center;font-family:helvetica">Des contrôles ludiques !</div>
+		<div id="panneauxUtilisation" class="conteneurInstructions">
+		
+			<div class="rowIns">
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Ouverture de menu                          
+					</div>
+				</div>
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Coté menu : parcourir menu                    
+					</div>
+				</div>
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Coté volume : monter / baisser le volume
+					</div>
+				</div>
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Coté luminosité : monter / baisser la luminosité
+					</div>
+				</div>
+			</div>
+			<div class="rowIns">
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Valider son choix                     
+					</div>
+				</div>
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Retour arrière                           
+					</div>
+				</div>
+				<div class="columnIns">
+					<img src = "./ressources/instructions/1.png" >
+					<div class="texteInstruction" >
+						Veille forcée                               
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		<div id="API">
+			<div id="fondAPI">
+				
+				<div class="fondEcranAPI"  style="background-image:url(/ressources/fondBluePrint.jpg);" >
+					<div id="noirAPI">
+						<div id="conteneurAPI">
+							<div id="texteAPI"><div class="containerCenterVert">Vous voulez personaliser votre espace de vie : consultez vite la documentation de l'API!</div></div>
+							<div id="conteneurBoutonAPI">
+								<div class="containerCenterVert">
+									<div  class="boutonTransparent"><a href="api.html" id="boutonAPI">API</a></div>
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div id="gradAPI"></div>
+				</div>
+			</div>
+			
+			
 		</div>
 		</div>
 		<div id="footer">

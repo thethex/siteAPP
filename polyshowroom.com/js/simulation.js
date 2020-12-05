@@ -10,7 +10,6 @@ var imgTable= new Image();
 var imgPers = new Image();
 var widthCanvas=heightCanvas=0;
 
-
 //rayon en nb de pixel calculé à la main 
 rapportTailleCase=135;//135px pour 50cm
 ecartCentre= rapportTailleCase*3/8;
@@ -225,7 +224,9 @@ function simule(){
 		dessine();
 		changement=0;
 	}
-	
+	if(document.getElementById("onoff").value=="On"){
+		uploadResutats();  
+	}
 }
 
 
@@ -802,5 +803,22 @@ function actionTouche(touche){
 						 
 			}
 		}
+	
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////		fonctions autres 	    /////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function uploadResutats(){
+	console.log("up");
+						$.ajax({
+								type: "POST",
+								url: "envoi.php",
+								data: {Valeurs: document.getElementById("valCapteurs").innerHTML}
+							})
+							.done(function (msg) {
+							});
 	
 }

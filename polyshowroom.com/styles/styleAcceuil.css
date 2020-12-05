@@ -1,5 +1,5 @@
 #videoPresentation{
-	padding:20px;
+
 	display: block;
     float: none;
 	position:relative;
@@ -10,21 +10,40 @@
 }
 
 .video_wrap{ 
+	height:100%;
 	display: flex;
 	max-width:985px;  
 	overflow:hidden; 
 	margin:0px auto;
+	padding:0;
 	background:rgb(50,55,50);
+	    justify-content: center;
+    align-items: center;
 } 
  .video_wrap video{ 
+	width:100%;
    filter:opacity(60%);
 } 
  
 .centerVertFlex{
-	 display: flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
+
+@media screen and (max-width: 1150px) {
+	.video_wrap{ 
+		 width:100%;
+	 	 min-height:554px;
+	} 
+	.video_wrap video{ 
+		 height:554px;
+	 	 width:985px;
+	
+	} 
+	
+}
+
 
 .image_wrap{
 	display: flex; 
@@ -47,18 +66,29 @@
 }
 
 #texteAcceuil{
+	height:50%;
 	max-width:500px;
 	position:relative;
 	text-align: left;
 	word-wrap: break-word;
-
 	color:rgb(230,230,230);
+	margin-bottom:50px;
 }
 
-@media screen and (max-width: 1150px) {
-	
-	
+
+#conteneurBoutonVideo{
+	height:50%;
+	max-width:500px;
+	position:relative;
+	margin-top:50px;
 }
+
+#boutonVideo{
+
+	font-family:helvetica;
+	font-size:40px;	
+}
+
 #conteneurBandeauPresentation{
 	position:relative;
 	text-align:center;
@@ -68,10 +98,10 @@
 }
 
 #conteneurBandeauPresentation p{
-	max-width:1200px;
-	padding:20px 20px;
+	max-width:1100px;
+	padding:40px 10px;
 	margin:0 auto;
-	font-size:calc( 1vw + 10px );
+	font-size:calc( 1vw + 20px );
 	color:rgb(42,40,42);
 	font-family:helvetica;
 }
@@ -149,7 +179,7 @@
 	   width: 100%;
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1200px) {
 	 .column {
 		flex: 23%;
 		max-width: 23%;
@@ -160,7 +190,7 @@
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
 	 .column {
 		flex: 92%;
 		max-width: 92%;
@@ -182,8 +212,11 @@
 
 #overlayPanneau{
 	position:relative;
-	background-color:rgb(140,110,142,0.9);
+	background-color:rgb(50,50,50,0.9);
 	overflow:hidden;
+	color:white;
+	font-family:verdana;
+	font-size:20px;
 }
 
 .conteneurVoletHaut #overlayPanneau{
@@ -239,4 +272,149 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+.conteneurInstructions{
+	position:relative;
+	margin:5% auto;
+	max-width:1600px; 
+	min-width:444px; 
+	height:90%;
+}
+
+.rowIns{
+  display: flex;
+  width:100%;
+  flex-wrap: wrap;
+  padding: 0px 0;
+}
+
+.columnIns{
+		margin:auto;
+		max-width: 23%;
+		padding: 1% 1%;
+}
+.columnIns img{
+	   width: 50%;
+	   margin:0 auto;
+	   padding:0 25%;
+}
+
+.texteInstruction{
+	font-size:calc(12px + 1vw);
+	font-family:helvetica;
+	text-align:center;
+}
+
+
+@media screen and (max-width: 980px) {
+	 .columnIns {
+		flex: 42%;
+		max-width: 42%;
+	    padding: 4% 4%;
+	}
+}
+
+
+#API{
+	margin-top:10%;	
+}
+#fondAPI{
+	margin:0 auto;
+	width:80%;
+	max-width:1536px;
+	height:40vw;
+	max-height:768px;
+	min-height:650px;
+}
+
+#gradAPI{
+	position:relative;
+	width:50%;
+	height:100%;
+	margin: 0 auto;
+	float:right;
+ 	background-image: linear-gradient(to right,rgb(60,60,60,0.2), rgb(60,60,60,0.7));	
+}
+#noirAPI{
+	
+	position:relative;
+	width:50%;
+	height:100%;
+	min-width:650px;
+	margin: 0 auto;
+	float:right;
+ 	background:rgb(60,60,60,0.7);	
+}
+
+@media screen and (max-width: 1630px) {
+	#gradAPI{
+		width:calc(100% - 650px);	
+	}
+}
+
+@media screen and (max-width: 980px) {
+	#fondAPI{
+		width:784px;
+	}
+	
+}
+@media screen and (max-width: 784px) {
+	#fondAPI{
+		width:100%;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	
+	#gradAPI{
+		width:0px;
+	}
+	#noirAPI{
+	 	width:100%;
+		min-width:100%;
+	}
+}
+.fondEcranAPI{
+	
+	height:100%;
+	background-repeat: repeat;
+	background-position: center; 
+	margin:0 auto;
+}
+
+
+#conteneurAPI{
+	margin:auto;
+	padding:30px;
+	height:calc(100% - 60px);
+	width:calc(100% - 60px);
+	font-family:helvetica;
+	color:white;
+}
+
+#texteAPI{
+	position:relative;
+	height:50%;
+	width:100%;
+	font-size:40px;	
+}
+
+
+#boutonAPI{
+	font-size:50px;	
+}
+
+
+#conteneurBoutonAPI{
+	position:relative;
+	height:50%;
+	width:100%;
+}
+.containerCenterVert{
+	width:100%;
+	position: absolute;
+ 	top: 50%;
+ 	transform: translateY(-50%);	
 }

@@ -62,6 +62,7 @@ function resize(){
 		modifMenu();
 		
 	}else if(940>$( window ).width()){
+			margeMaxMenu=0;
 		menuFixe=true;
 		modifMenu();
 	}

@@ -19,7 +19,7 @@
 					<div class="boutonBarreNav"><a href="index.html" name='link'>Polyshowroom</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 					<div id="boutonOuvertureMenu" ><div class="barreCroix" id="croixMenuHaut"></div><div  class="barreCroix" id="croixMenuMilieu"></div><div  class="barreCroix" id="croixMenuBas"></div></div>
 					<div id="conteneurNavigation">	
-						<div class="boutonBarreNav"><a href="#conception" name='link'>Conception</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+						<div class="boutonBarreNav"><a href="api.html" name='link'>API</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 						<div class="boutonBarreNav"><a href="simulation.html" name='link'>Simulation</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 					</div>
 				</div>
@@ -88,7 +88,20 @@
 					});
 				});
 			</script>
+			<div style="font-size:20px;color:rgb(230,230,230)">envoi en continu :
+			<script type="text/javascript">
+			function onoff(){
+			  currentvalue = document.getElementById('onoff').value;
+			  if(currentvalue == "Off"){
+				document.getElementById("onoff").value="On";
+			  }else{
+				document.getElementById("onoff").value="Off";
+			  }
+			}
+			</script>
 
+			<input type="button" value="Off" id="onoff" onclick="onoff();">
+			</div>
 
 		</div>
 	</div>
