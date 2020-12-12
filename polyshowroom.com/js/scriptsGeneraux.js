@@ -30,12 +30,15 @@ function chargeElements(){
 	   var withinViewportArray = $('.chargeable').percentWithinViewport();
 	   
 	   $.each(withinViewportArray, function(index){
-		   console.log(withinViewportArray[index]);
+		   
 		   $.each(ecrans, function(index2){
+			   //console.log(withinViewportArray[index]);
+			   //console.log(    ecrans[index2]);
+			
 				if(withinViewportArray[index] == ecrans[index2]){
 					
 					chargerEcran(ecrans[index2]);
-					fruits.splice(index2, 1)
+					ecran.splice(index2, 1)
 				}
 			});			  
 	   });
@@ -102,3 +105,36 @@ $(document).ready(function(){$('#boutonOuvertureMenu').click(function(){
 function onDocumentLoaded(){
 	 resize() ;modifMenu();
 }
+
+
+
+//animations de chargement
+	$('#imgSalon').on('load',function(){
+		console.log('ready');
+		$('#imSalon').css("width", "100%");
+		$('#conteneurZoneTextSalon').css("width", "100%");
+		$('#texteSalon').css("color","rgb(30,30,30,1)");
+	});
+window.onload = function () {
+	console.log('ready');
+	$('#imgSalon').on('load',function(){
+		console.log('ready');
+		$('#imSalon').css("width", "100%");
+		$('#conteneurZoneTextSalon').css("width", "100%");
+		$('#texteSalon').css("color","rgb(30,30,30,1)");
+	});
+
+};
+
+
+attente=0;
+
+	console.log('ready');
+	$('.ImageColumnIns').on('load',function(){
+		console.log('im');
+		$(this).parent().css("-webkit-transition","1.5s");
+		$(this).parent().css("transition-delay",""+attente+"ms");
+		$(this).parent().css("opacity","1");
+		attente=attente+200;
+	});
+

@@ -17,14 +17,17 @@
 
 <body>
 
-	<div class="fondEcran" style="	background-image:url('/ressources/fondPrincipal.jpg');"></div>
-
+	<div id="fondPrincipal" >
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 	<div class="ecran">
 		<div id="menus">
 			<nav id="conteneurBarreNavigation">
 				<div id="barreNavigation">
 				
-					<div class="boutonBarreNav"><a href="index.html" name='link'>Polyshowroom</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
+					<div class="boutonBarreNav"><a href="index.html" style="font-size:20px ; font-weight:bold" name='link'>Polyshowroom</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
 					<div id="boutonOuvertureMenu" ><div class="barreCroix" id="croixMenuHaut"></div><div  class="barreCroix" id="croixMenuMilieu"></div><div  class="barreCroix" id="croixMenuBas"></div></div>
 					<div id="conteneurNavigation">	
 						<div class="boutonBarreNav"><a href="api.html" name='link'>API</a><div class="lumiereBoutonBarre"><div class="souligneBoutonBarre"></div></div></div>
@@ -64,14 +67,14 @@
 		<div class="ecran">
 			<div id="conteneurSalon" class="chargeable">
 			<div id="conteneurTextSalon">
-				<div id="conteneurZoneTextSalon" class="centerVertFlex">
-					<p id="texteSalon" class="GrosText" > Elle permet de détecter la présence des personnes dans la pièce grâce à des capteurs innovants basé sur une technologie inédite d’ultrasons.</p>	
+				<div id="conteneurZoneTextSalon" class="centerVertFlex" style="width:0% ; overflow:hidden ; -webkit-transition: width 500ms">
+					<p id="texteSalon" class="GrosText" style="color:rgb(30,30,30,0); -webkit-transition : color 500ms ;transition-delay: 400ms; " > Elle permet de détecter la présence des personnes dans la pièce grâce à des capteurs innovants basé sur une technologie inédite d’ultrasons.</p>	
 				</div>
 			</div>
 			
 			<div id="conteneurImageSalon" class="centerVertFlex">
-					<div id="imSalon" class="image_wrap">
-						<img src = "./ressources/salon.jpg" >
+					<div id="imSalon" class="image_wrap" style="width:0% ; -webkit-transition: width 1s">
+						<img id="imgSalon" src = "./ressources/salon.jpg" loading="lazy" />
 				</div>
 			</div>
 				
@@ -102,8 +105,46 @@
 					</div>
 				</div>
 			</div>
-				
 		</div>
+			
+		<div id="ecranEnviro" style="max-width:1280px; width:100%;margin:0 auto">
+				<div style="padding:50px;align-text:center"><p style="font-size:calc(20px + 1vw);font-family:helvetica;color:rgb(50,35,50)">INTERCONNECTION WIFI/Bluetooth POUR POUVOIR PILOTER L'ENSEMBLE DE VOTRE ESPACE DE VIE</h1></div>
+			<div id="ligneHaut" style=" display: flex;width:100%;flex-wrap: wrap; padding: 10px;">
+				<div class="objetEnviro" style="max-width:200px; flex:50%; padding: 0px 0;margin:0 auto">
+						<img src="./ressources/environnement/Télé.png"  style="width:100%" alt="" />
+				</div>
+				<div class="objetEnviro" style="max-width:200px;flex:50%;margin:0 auto;padding: 0;">
+						<img src="./ressources/environnement/Ampoule.png"  style="width:100%"  alt="" />
+				</div>
+			</div>
+			<div id="ligneMilieu" style="display: flex;width:30%;flex-wrap: wrap; padding: 10px;margin: 20px auto">
+				<div class="objetEnviro" style="max-width:200px; flex:50%; padding: 0px 0;margin:0 auto">
+						<img src="./ressources/environnement/WIFI.png" style="width:100%" alt="" />
+				</div>	
+				<div class="objetEnviro" style="max-width:200px; flex:50%; padding: 0px 0;margin:0 auto">
+						<img src="./ressources/environnement/Bluetooth.png" style="width:100%" alt="" />
+				</div>	
+			</div>
+			<div id="ligneBas" style=" display: flex;width:100%;flex-wrap: wrap; padding: 10px;">
+				<div class="objetEnviro" style="max-width:200px; flex:20%; padding: 0px 0;margin:0 auto">
+						<img src="./ressources/environnement/Table.png"  style="width:100%"  alt="" />
+				</div>
+				<div class="objetEnviro" style="max-width:200px;flex:20%;margin:0 auto;padding: 0;">
+						<img src="./ressources/environnement/WIFI.png"  style="width:80% ;margin:10%" alt="" />
+				</div>
+				<div class="objetEnviro" style="max-width:200px;flex:20%;margin:0 auto;padding: 0;">
+						<img src="./ressources/environnement/Ordi.png" style="width:100%"  alt="" />
+				</div>
+				<div class="objetEnviro" style="max-width:200px;flex:20%;margin:0 auto;padding: 0;">
+						<img src="./ressources/environnement/WIFI.png"  style="width:80%; margin:10%"  alt="" />
+				</div>
+				<div class="objetEnviro" style="max-width:200px;flex:20%;margin:0 auto;padding: 0;">
+						<img src="./ressources/environnement/Phone.png" h style="width:100%"  alt="" />
+				</div>
+			</div>
+			<div  style="padding:50px;align-text:center"><h3 style="font-size:calc(20px + 1vw);font-family:helvetica;color:rgb(50,35,50)">CONTROLE SIMPLE A PARTIR DE VOTRE TELEPHONE ET COMMANDE DE VOTRE CENTRE DE PILOTAGE : ORDINATEUR...</h3></div>
+		</div>	
+			
 		</div>
 		<div style="margin:100px 0 0 0;font-size:calc(40px + 1vw);text-align:center;font-family:helvetica;color:rgb(230,230,230)">Une installation simple en 4 étapes</div>
 		
@@ -157,25 +198,25 @@
 		
 			<div class="rowIns">
 				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+					<img class="ImageColumnIns" src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Ouverture de menu                          
 					</div>
 				</div>
 				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+					<img class="ImageColumnIns"  src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Coté menu : parcourir menu                    
 					</div>
 				</div>
 				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+					<img class="ImageColumnIns"  src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Coté volume : monter / baisser le volume
 					</div>
 				</div>
 				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+					<img class="ImageColumnIns"  src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Coté luminosité : monter / baisser la luminosité
 					</div>
@@ -183,19 +224,19 @@
 			</div>
 			<div class="rowIns">
 				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+					<img class="ImageColumnIns"  src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Valider son choix                     
 					</div>
 				</div>
 				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+					<img class="ImageColumnIns"  src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Retour arrière                           
 					</div>
 				</div>
-				<div class="columnIns">
-					<img src = "./ressources/instructions/1.png" >
+				<div  class="columnIns">
+					<img class="ImageColumnIns"  src = "./ressources/instructions/1.png" loading="lazy"/>
 					<div class="texteInstruction" >
 						Veille forcée                               
 					</div>
@@ -207,9 +248,10 @@
 			<div id="fondAPI">
 				
 				<div class="fondEcranAPI"  style="background-image:url(/ressources/fondBluePrint.jpg);" >
+					<img id="TableBPrint" src="ressources/tableBluePrint.png" loading="lazy" />
 					<div id="noirAPI">
 						<div id="conteneurAPI">
-							<div id="texteAPI"><div class="containerCenterVert">Vous voulez personaliser votre espace de vie : consultez vite la documentation de l'API!</div></div>
+							<div id="texteAPI"><div class="containerCenterVert"><div>Vous voulez personaliser votre espace de vie : consultez vite la documentation de l'API!</div></div></div>
 							<div id="conteneurBoutonAPI">
 								<div class="containerCenterVert">
 									<div  class="boutonTransparent"><a href="api.html" id="boutonAPI">API</a></div>

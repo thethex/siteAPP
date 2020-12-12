@@ -103,6 +103,7 @@ body{
 	padding:3px ;
 	height:56px;
 	width:56px;
+
 }
 
 #boutonOuvertureMenu{
@@ -159,7 +160,7 @@ body{
 
 
 .boutonBarreNav{
-	font-family:verdana;
+	font-family:helvetica;
 	position:relative;
 	margin:0 auto ;
 	float:left;
